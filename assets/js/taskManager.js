@@ -134,4 +134,16 @@ class TaskManager {
         const taskListCards = document.querySelector("#taskList");
         taskListCards.innerHTML = tasksHtml;
     }
+
+    save() {
+
+        const taskJson = JSON.stringify(this.tasks);
+        localStorage.setItem("tasks", taskJson);
+        const currentId = this.currentId.toString();
+        localStorage.setItem("currentId", currentId);
+
+
+    }
+
 }
+
