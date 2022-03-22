@@ -63,6 +63,7 @@ function validateFormInput(e) {
     }
     myTaskManager.addTask(taskName, taskDesc, assignedTo, taskDate);
     myTaskManager.getTaskById();
+    myTaskManager.save();
     myTaskManager.render();
 
 
@@ -87,9 +88,10 @@ taskListCards.addEventListener('click', (event) => {
         const taskId = Number(taskListCards.getAttribute('data-task-id'));
         const task = myTaskManager.getTaskById(taskId);
         task.status = 'DONE';
-        if (task.status === 'DONE') {
-            document.querySelector('.done-button').style.display = 'none';
-        }
+        // if (task.status === 'DONE') {
+        //     document.querySelector('.done-button').style.display = 'none';
+        // }
+        myTaskManager.save();
         myTaskManager.render();
     }
 
