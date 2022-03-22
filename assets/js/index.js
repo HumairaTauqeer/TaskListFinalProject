@@ -89,7 +89,7 @@ taskListCards.addEventListener('click', (event) => {
         const task = myTaskManager.getTaskById(taskId);
         task.status = 'DONE';
         // if (task.status === 'DONE') {
-        //     document.querySelector('.done-button').style.display = 'none';
+        // document.querySelector('.done-button').style.color = 'red';
         // }
         myTaskManager.save();
         myTaskManager.render();

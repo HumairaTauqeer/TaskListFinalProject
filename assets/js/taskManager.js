@@ -24,7 +24,13 @@ const createTaskHtml = (name, assignedTo, dueDate, status, description, id) => {
 
 
             <div>
-                <p>${status}</p>
+            <div id ='if-part' style= 'visibility:hidden'>
+                <p style= "color:green">${status}</p>
+            </div>
+
+            <div id ='else-part' style= 'visibility:hidden'>
+                <p style= "color:red">${status}</p>
+            </div>
                 <button class="done-button">Done</button>
                 <button>Delete</button>
 
@@ -130,6 +136,14 @@ class TaskManager {
             );
             tasksHtmlList.push(taskHtml);
         }
+
+        tasksHtmlList.forEach((taskhtml,index) => {
+            if(this.tasks[index].status == 'DONE') {
+                tasksHtmlList[index] = tasksHtmlList[index].replace('<div id =\'if-part\' style= \'visibility:hidden\'','<div id =\'if-part\' style= \'visibility:visible\'')
+            } else {
+                tasksHtmlList[index] = tasksHtmlList[index].replace('<div id =\'else-part\' style= \'visibility:hidden\'','<div id =\'if-part\' style= \'visibility:visible\'')
+            }
+        })
         const tasksHtml = tasksHtmlList.join("\n");
         const taskListCards = document.querySelector("#taskList");
         taskListCards.innerHTML = tasksHtml;
