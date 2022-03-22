@@ -77,7 +77,7 @@ p {
 
 .heading {
     margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .form-control {
@@ -107,10 +107,17 @@ p {
     background-color: var(--clr-2);
     margin-bottom: 0.5rem;
     border: solid .3rem var(--clr-dark4);
+    /* text-align: center; */
+    height: 30rem;
+    /* overflow: scroll; */
 }
 
 .col {
     margin-right: 3rem;
+}
+
+.row {
+    flex-wrap: nowrap !important;
 }
 
 
@@ -124,8 +131,11 @@ button {
     border-radius: 0.5rem;
 }
 
+.card-title {
+    color: var(--clr-1);
+    font-weight: 600;
+}
 
-/* .card-img-top {
-    width: 100%;
-    object-fit: cover;
-} */
+.card-body {
+    padding-left: 2rem;
+}

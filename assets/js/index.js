@@ -11,6 +11,8 @@ const date = document.getElementById('task-date');
 const addTaskbutton = document.getElementById('add-task-button');
 
 const myTaskManager = new TaskManager();
+myTaskManager.load();
+myTaskManager.render();
 // myTaskManager.addTask('do groceries', 'buy some fruits', 'humaira', 'today')
 // const secondTask = myTaskManager.addTask('do laundry', 'wash all clothes', 'hum', 'tomorrow')
 // console.log(secondTask);
@@ -53,7 +55,7 @@ function validateFormInput(e) {
 
         return false;
     }
-    if (taskDate === ('')) {
+    if (taskDate === ('') || taskDate === NaN) {
 
 
         dateError.style.display = 'block';
@@ -63,6 +65,7 @@ function validateFormInput(e) {
     }
     myTaskManager.addTask(taskName, taskDesc, assignedTo, taskDate);
     myTaskManager.getTaskById();
+
     myTaskManager.render();
 
 
@@ -81,16 +84,23 @@ addTaskbutton.addEventListener('click', validateFormInput);
 const taskListCards = document.querySelector('#taskList');
 taskListCards.addEventListener('click', (event) => {
     if (event.target.classList.contains('done-button')) {
-        console.log('!!!!!!!!!', event.target);
+        // console.log('!!!!!!!!!', event.target);
         const parentTask = event.target.parentElement.parentElement.parentElement.parentElement.parentElement;
         console.log(parentTask);
-        const taskId = Number(taskListCards.getAttribute('data-task-id'));
+        // read article about dataset and write appropriate comment for explanation of the step
+        const taskId = Number(parentTask.dataset.taskId);
+        // console.log(taskId);
         const task = myTaskManager.getTaskById(taskId);
         task.status = 'DONE';
-        if (task.status === 'DONE') {
-            document.querySelector('.done-button').style.display = 'none';
-        }
+        // if (task.status === 'DONE') {
+        //     const status = getElementById('status');
+        //     status.style.color = 'red';
+        // }
+
+        // document.querySelector('.done-button').style.display = 'none';
+
         myTaskManager.render();
+
     }
 
 })

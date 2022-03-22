@@ -115,9 +115,9 @@ class TaskManager {
             const formattedDate =
 
                 (date.getMonth() + 1) +
-                " /" +
+                "/" +
                 date.getDate() +
-                " /" +
+                "/" +
                 date.getFullYear();
 
             const taskHtml = createTaskHtml(
@@ -133,5 +133,16 @@ class TaskManager {
         const tasksHtml = tasksHtmlList.join("\n");
         const taskListCards = document.querySelector("#taskList");
         taskListCards.innerHTML = tasksHtml;
+    }
+
+    load() {
+        if (localStorage.getItem("tasks") !== null) {
+            const taskJson = localStorage.getItem("tasks");
+            this.tasks = JSON.parse(taskJson);
+        }
+        if (localStorage.getItem("currentId") !== null) {
+            const currentId = localStorage.getItem("currentId");
+            this.currentId = Number(currentId);
+        }
     }
 }
