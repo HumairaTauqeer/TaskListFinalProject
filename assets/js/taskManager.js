@@ -118,7 +118,7 @@ class TaskManager {
         }
         if (localStorage.getItem("currentId") !== null) {
             const currentId = localStorage.getItem("currentId");
-            this.currentId = Number(currentId);
+            this.currentId = currentId.toString();
         }
     }
 

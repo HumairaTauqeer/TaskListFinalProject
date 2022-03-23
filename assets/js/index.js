@@ -31,7 +31,7 @@ function validateFormInput(e) {
     taskDescError.style.display = 'none';
     assignedToError.style.display = 'none';
     dateError.style.display = 'none';
-
+    // taskNameInput.innerHTML = '';
     if (taskName == ('')) {
 
         taskNameError.style.display = 'block';
@@ -79,22 +79,22 @@ addTaskbutton.addEventListener('click', validateFormInput);
 // )
 const taskListCards = document.querySelector('#taskList');
 taskListCards.addEventListener('click', (event) => {
-    if (event.target.classList.contains('done-button')) {
-        // console.log('!!!!!!!!!', event.target);
-        const parentTask = event.target.parentElement.parentElement.parentElement;
-        console.log(parentTask);
-        // read article about dataset and write appropriate comment for explanation of the step
-        const taskId = Number(parentTask.dataset.taskId);
-        // console.log(taskId);
-        const task = myTaskManager.getTaskById(taskId);
-        task.status = 'DONE';
+        if (event.target.classList.contains('done-button')) {
+            // console.log('!!!!!!!!!', event.target);
+            const parentTask = event.target.parentElement.parentElement.parentElement;
+            console.log(parentTask);
+            // read article about dataset and write appropriate comment for explanation of the step
+            const taskId = Number(parentTask.dataset.taskId);
+            // console.log(taskId);
+            const task = myTaskManager.getTaskById(taskId);
+            task.status = 'DONE';
 
-        myTaskManager.save();
-        myTaskManager.render();
+            myTaskManager.save();
+            myTaskManager.render();
 
-    }
-
-})
+        }
+    })
+    // const reset = 
 
 
 
