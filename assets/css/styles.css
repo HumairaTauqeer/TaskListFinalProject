@@ -83,6 +83,21 @@ p {
 .form-control {
     background-color: var(--clr-2);
     border: solid 0.07rem var(--clr-dark4);
+    color: var(--clr-dark4) !important;
+    font-size: 1.3rem;
+    font-weight: 450;
+}
+
+input::placeholder {
+    color: var(--clr-dark3) !important;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+textarea::placeholder {
+    color: var(--clr-dark3) !important;
+    font-size: 1.2rem;
+    font-style: italic;
 }
 
 .alert {
@@ -108,16 +123,12 @@ p {
     margin-bottom: 0.5rem;
     border: solid .3rem var(--clr-dark4);
     /* text-align: center; */
-    height: 30rem;
     /* overflow: scroll; */
+    width: 100%;
 }
 
 .col {
     margin-right: 3rem;
-}
-
-.row {
-    flex-wrap: nowrap !important;
 }
 
 
