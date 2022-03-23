@@ -77,12 +77,27 @@ p {
 
 .heading {
     margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .form-control {
     background-color: var(--clr-2);
     border: solid 0.07rem var(--clr-dark4);
+    color: var(--clr-dark4) !important;
+    font-size: 1.3rem;
+    font-weight: 450;
+}
+
+input::placeholder {
+    color: var(--clr-dark3) !important;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+textarea::placeholder {
+    color: var(--clr-dark3) !important;
+    font-size: 1.2rem;
+    font-style: italic;
 }
 
 .alert {
@@ -107,6 +122,9 @@ p {
     background-color: var(--clr-2);
     margin-bottom: 0.5rem;
     border: solid .3rem var(--clr-dark4);
+    /* text-align: center; */
+    /* overflow: scroll; */
+    width: 100%;
 }
 
 .col {
@@ -124,8 +142,11 @@ button {
     border-radius: 0.5rem;
 }
 
+.card-title {
+    color: var(--clr-1);
+    font-weight: 600;
+}
 
-/* .card-img-top {
-    width: 100%;
-    object-fit: cover;
-} */
+.card-body {
+    padding-left: 2rem;
+}

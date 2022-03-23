@@ -3,7 +3,7 @@ const taskNameInput = document.getElementById('task-name');
 
 const taskDescription = document.getElementById('task-desc');
 
-// const errorDisplay = document.getElementById('error');
+
 
 const taskAssignedTo = document.getElementById('assigned');
 
@@ -11,12 +11,9 @@ const date = document.getElementById('task-date');
 const addTaskbutton = document.getElementById('add-task-button');
 
 const myTaskManager = new TaskManager();
-// myTaskManager.addTask('do groceries', 'buy some fruits', 'humaira', 'today')
-// const secondTask = myTaskManager.addTask('do laundry', 'wash all clothes', 'hum', 'tomorrow')
-// console.log(secondTask);
+myTaskManager.load();
+myTaskManager.render();
 
-
-// console.log(firstTask);
 
 
 function validateFormInput(e) {
@@ -34,6 +31,7 @@ function validateFormInput(e) {
     taskDescError.style.display = 'none';
     assignedToError.style.display = 'none';
     dateError.style.display = 'none';
+    // taskNameInput.innerHTML = '';
     if (taskName == ('')) {
 
         taskNameError.style.display = 'block';
@@ -53,7 +51,7 @@ function validateFormInput(e) {
 
         return false;
     }
-    if (taskDate === ('')) {
+    if (taskDate === ('') || taskDate === NaN) {
 
 
         dateError.style.display = 'block';
@@ -81,21 +79,25 @@ addTaskbutton.addEventListener('click', validateFormInput);
 // )
 const taskListCards = document.querySelector('#taskList');
 taskListCards.addEventListener('click', (event) => {
-    if (event.target.classList.contains('done-button')) {
-        console.log('!!!!!!!!!', event.target);
-        const parentTask = event.target.parentElement.parentElement.parentElement.parentElement.parentElement;
-        console.log(parentTask);
-        const taskId = Number(taskListCards.getAttribute('data-task-id'));
-        const task = myTaskManager.getTaskById(taskId);
-        task.status = 'DONE';
-        // if (task.status === 'DONE') {
-        // document.querySelector('.done-button').style.color = 'red';
-        // }
-        myTaskManager.save();
-        myTaskManager.render();
-    }
 
-})
+        if (event.target.classList.contains('done-button')) {
+            // console.log('!!!!!!!!!', event.target);
+            const parentTask = event.target.parentElement.parentElement.parentElement;
+            console.log(parentTask);
+            // read article about dataset and write appropriate comment for explanation of the step
+            const taskId = Number(parentTask.dataset.taskId);
+            // console.log(taskId);
+            const task = myTaskManager.getTaskById(taskId);
+            task.status = 'DONE';
+
+            myTaskManager.save();
+            myTaskManager.render();
+
+        }
+    })
+    
+
+
 
 
 

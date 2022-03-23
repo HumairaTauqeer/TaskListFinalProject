@@ -26,7 +26,7 @@
         </div>
         <form action="">
             <label for="task-name" class="form-label mb-3 mt-5">Task Name</label>
-            <input type="text" class="form-control" id="task-name" name="t-name" placeholder="e.g Add form">
+            <input type="text" class="form-control" id="task-name" name="t-name" placeholder="e.g Buy fruits">
             <!-- error div for task name -->
             <div id="error-t-name" class="alert alert-danger" role="alert">
                 A task name must be entered!
@@ -34,13 +34,13 @@
 
 
             <label for="task-desc" class="form-label mb-3 mt-5">Task Description</label>
-            <textarea id="task-desc" class="form-control" style="height: 70px;" placeholder="Add a form with two input fields"></textarea>
+            <textarea id="task-desc" class="form-control" style="height: 70px;" placeholder=" e.g Buy some mangoes"></textarea>
             <!-- error div for task description -->
             <div id="error-t-desc" class="alert alert-danger" role="alert">
                 A task description must be entered!
             </div>
             <label for="assigned" class="form-label mb-3 mt-5  ">Assigned To</label>
-            <input type="text" class="form-control assignedToInput " id="assigned">
+            <input type="text" class="form-control assignedToInput " id="assigned" placeholder="e.g John Doe">
             <div id="error-t-assignedTo" class="alert alert-danger" role="alert">
                 A name must be entered!
             </div>
@@ -57,45 +57,11 @@
         <hr>
         <section id="display-cards">
 
-            <h2 class="section-heading">Tasks</h2>
+            <h2 class="heading">Tasks</h2>
 
             <div class="row" id="taskList">
-                <div class=" col-lg-4 col-md-6">
-                    <!-- <div class="card">
-                        <div class="card-header">
-                            <img src="./assets/images/task.jpeg" class="card-img-top" alt="...">
-
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title card-font-size">make form</h3>
-
-
-
-                            <h4 class="card-text card-font-size">Assigned To</h4>
-                            <p>humaira</p>
-
-                            <h4 class="card-font-size card-font-size">Due Date</h4>
-                            <p>mm/dd/yyyy</p>
-
-                            <h4 class="margin-task-desc card-font-size">Task Description</h4>
-                            <p class="margin-task-desc">do work</p>
-
-
-
-
-                            <div>
-                                <p>status</p>
-                                <button class="done-button">Done</button>
-                                <button>Delete</button>
-
-                            </div>
-
-                        </div>
-
-                    </div> -->
-
-                </div>
-                <!-- <div class=" col-lg-4 col-md-6">
+                <!-- Card body starts here -->
+                <!-- <div class="col-lg-4 col-md-6 ">
                     <div class="card">
                         <div class="card-header">
                             <img src="./assets/images/task.jpeg" class="card-img-top" alt="...">
@@ -112,65 +78,24 @@
                             <h4 class="card-font-size card-font-size">Due Date</h4>
                             <p>mm/dd/yyyy</p>
 
-                            <h4 class="margin-task-desc card-font-size">Task Description</h4>
-                            <p class="margin-task-desc">do work</p>
+                            <h4 class=" card-font-size">Task Description</h4>
+                            <p class="">do work</p>
 
 
 
 
                             <div>
-                                <p>status</p>
-                                <button class="done-button">Done</button>
-                                <button>Delete</button>
-
-                            </div>
-
-
-                        </div>
-                    </div>
-
-                </div> -->
-                <!-- <div class=" col-lg-4 col-md-6 ">
-                    <div class="card">
-                        <div class="card-header">
-                            <img src="./assets/images/task.jpeg" class="card-img-top" alt="...">
-
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title card-font-size">make form</h3>
-
-
-
-                            <h4 class="card-text card-font-size">Assigned To</h4>
-                            <p>humaira</p>
-
-                            <h4 class="card-font-size card-font-size">Due Date</h4>
-                            <p>mm/dd/yyyy</p>
-
-                            <h4 class="margin-task-desc card-font-size">Task Description</h4>
-                            <p class="margin-task-desc">do work</p>
-
-
-
-
-                            <div>
-                                <p>status</p>
+                                <p id="status">status</p>
                                 <button class="done-button">Done</button>
                                 <button>Delete</button>
 
                             </div>
 
                         </div>
+
                     </div>
+
                 </div> -->
-
-
-
-
-
-
-
-
 
             </div>
 

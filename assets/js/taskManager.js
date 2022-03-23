@@ -1,84 +1,38 @@
 const createTaskHtml = (name, assignedTo, dueDate, status, description, id) => {
-    const html = ` <div class="row" id="taskList" data-task-id='${id}'>
-    <div class=" col-lg-4 col-md-6" >
-    <div class="card">
-        <div class="card-header">
-            <img src="./assets/images/task.jpeg" class="card-img-top" alt="...">
 
-        </div>
-        <div class="card-body">
-            <h3 class="card-title card-font-size">${name}</h3>
-
-
-
-            <h4 class="card-text card-font-size">Assigned To</h4>
-            <p>${assignedTo}</p>
-
-            <h4 class="card-font-size card-font-size">Due Date</h4>
-            <p>${dueDate}</p>
-
-            <h4 class="margin-task-desc card-font-size">Task Description</h4>
-            <p class="margin-task-desc">${description}</p>
-
-
-
-
-            <div>
-            <div id ='if-part' style= 'visibility:hidden'>
-                <p style= "color:green">${status}</p>
-            </div>
-
-            <div id ='else-part' style= 'visibility:hidden'>
-                <p style= "color:red">${status}</p>
-            </div>
-                <button class="done-button">Done</button>
-                <button>Delete</button>
+    const html = ` 
+<div class=" col-lg-4 col-md-6" >
+ <div class="card" data-task-id='${id}'>
+            <div class="card-header">
+                <img src="./assets/images/task.jpeg" class="card-img-top" alt="...">
 
             </div>
-
-        </div>
-        </div>
-
-    </div>`
-        //     const html = `  
-        //     <div class=" col-lg-4 col-md-6" id="taskList" data-task-id='${id}'>
-        //      <div class="card"  >
-        //     <img src="./assets/images/task.jpeg" class="card-img-top w-100" alt="...">
-        //     <div class="card-body">
-
-
-    //             <h3 class="card-title card-font-size">${name}</h3>
-
-
-
-    //                 <h4 class="card-text card-font-size">Assigned To</h4>
-    //                 <p>${assignedTo}</p>
-
-    //                 <h4 class="card-font-size card-font-size">Due Date</h4>
-    //                 <p>${dueDate}</p>
-
-    //                     <h4 class="margin-task-desc card-font-size">Task Description</h4>
-    //                     <p class="margin-task-desc">${description}</p>
-
-
-
-
-    //             <div>
-    //                 <p>${status}</p>
-    //                 <button class="done-button">Done</button>
-    //                 <button>Delete</button>
-
-    //             </div>
-
-    //     </div>
-
-    //          </div>
-    // `;
+            <div class="card-body">
+                <h3 class="card-title card-font-size">${name}</h3>
+                <h4 class="card-text card-font-size">Assigned To</h4>
+                <p>${assignedTo}</p>
+                 <h4 class="card-font-size card-font-size">Due Date</h4>
+                <p>${dueDate}</p>
+                 <h4 class="card-font-size">Task Description</h4>
+                <p>${description}</p>
+                <div>
+                      <div id ='if-part' style= 'visibility:hidden'>
+                            <p style= "color:green">${status}</p>
+                      </div>
+                      <div id ='else-part' style= 'visibility:hidden'>
+                            <p style= "color:red">${status}</p>
+                      </div>
+                      <button class="done-button">Done</button>
+                      <button>Delete</button>
+                </div>
+            </div>
+          </div>
+  </div>`
 
 
     return html;
 };
-console.log(createTaskHtml);
+// console.log(createTaskHtml);
 
 class TaskManager {
     constructor(currentId = 0) {
@@ -104,7 +58,7 @@ class TaskManager {
             const task = this.tasks[i];
             if (task.id === taskId) {
                 foundTask = task;
-                console.log(`!!!!!! ${foundTask}`);
+                // console.log(`!!!!!! ${foundTask}`);
             }
         }
         return foundTask;
@@ -121,9 +75,9 @@ class TaskManager {
             const formattedDate =
 
                 (date.getMonth() + 1) +
-                " /" +
+                "/" +
                 date.getDate() +
-                " /" +
+                "/" +
                 date.getFullYear();
 
             const taskHtml = createTaskHtml(
@@ -137,11 +91,13 @@ class TaskManager {
             tasksHtmlList.push(taskHtml);
         }
 
-        tasksHtmlList.forEach((taskhtml,index) => {
-            if(this.tasks[index].status == 'DONE') {
-                tasksHtmlList[index] = tasksHtmlList[index].replace('<div id =\'if-part\' style= \'visibility:hidden\'','<div id =\'if-part\' style= \'visibility:visible\'')
+
+        tasksHtmlList.forEach((taskhtml, index) => {
+            if (this.tasks[index].status == 'DONE') {
+                tasksHtmlList[index] = tasksHtmlList[index].replace('<div id =\'if-part\' style= \'visibility:hidden\'', '<div id =\'if-part\' style= \'visibility:visible\'')
             } else {
-                tasksHtmlList[index] = tasksHtmlList[index].replace('<div id =\'else-part\' style= \'visibility:hidden\'','<div id =\'if-part\' style= \'visibility:visible\'')
+                tasksHtmlList[index] = tasksHtmlList[index].replace('<div id =\'else-part\' style= \'visibility:hidden\'', '<div id =\'if-part\' style= \'visibility:visible\'')
+
             }
         })
         const tasksHtml = tasksHtmlList.join("\n");
@@ -158,6 +114,20 @@ class TaskManager {
 
 
     }
+
+    load() {
+        if (localStorage.getItem("tasks") !== null) {
+            const taskJson = localStorage.getItem("tasks");
+            this.tasks = JSON.parse(taskJson);
+
+        }
+        if (localStorage.getItem("currentId") !== null) {
+            const currentId = localStorage.getItem("currentId");
+            this.currentId = Number(currentId);
+        }
+    }
+
+
 
 }
 
