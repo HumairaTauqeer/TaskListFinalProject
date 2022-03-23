@@ -108,7 +108,6 @@ p {
     margin-bottom: 0.5rem;
     border: solid .3rem var(--clr-dark4);
     /* text-align: center; */
-    height: 30rem;
     /* overflow: scroll; */
 }
 
@@ -116,9 +115,17 @@ p {
     margin-right: 3rem;
 }
 
-.row {
+
+/* .row {
     flex-wrap: nowrap !important;
-}
+} */
+
+
+/* .row {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+} */
 
 
 /* done delete buttons */

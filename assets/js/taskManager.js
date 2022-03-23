@@ -1,78 +1,46 @@
 const createTaskHtml = (name, assignedTo, dueDate, status, description, id) => {
-    const html = ` <div class="row" id="taskList" data-task-id='${id}'>
+    const html = ` 
+    
     <div class=" col-lg-4 col-md-6" >
-    <div class="card">
-        <div class="card-header">
-            <img src="./assets/images/task.jpeg" class="card-img-top" alt="...">
-
-        </div>
-        <div class="card-body">
-            <h3 class="card-title card-font-size">${name}</h3>
-
-
-
-            <h4 class="card-text card-font-size">Assigned To</h4>
-            <p>${assignedTo}</p>
-
-            <h4 class="card-font-size card-font-size">Due Date</h4>
-            <p>${dueDate}</p>
-
-            <h4 class="margin-task-desc card-font-size">Task Description</h4>
-            <p class="margin-task-desc">${description}</p>
-
-
-
-
-            <div>
-                <p>${status}</p>
-                <button class="done-button">Done</button>
-                <button>Delete</button>
+        <div class="card" data-task-id='${id}'>
+            <div class="card-header">
+                <img src="./assets/images/task.jpeg" class="card-img-top" alt="...">
 
             </div>
+            <div class="card-body">
+                <h3 class="card-title card-font-size">${name}</h3>
 
-        </div>
-        </div>
 
+
+                <h4 class="card-text card-font-size">Assigned To</h4>
+                <p>${assignedTo}</p>
+
+                <h4 class="card-font-size card-font-size">Due Date</h4>
+                <p>${dueDate}</p>
+
+                <h4 class="margin-task-desc card-font-size">Task Description</h4>
+                <p class="margin-task-desc">${description}</p>
+
+
+
+
+                <div>
+                    <p>${status}</p>
+                    <button class="done-button">Done</button>
+                    <button>Delete</button>
+
+                </div>
+
+            </div>
+        
+        </div>
     </div>`
-        //     const html = `  
-        //     <div class=" col-lg-4 col-md-6" id="taskList" data-task-id='${id}'>
-        //      <div class="card"  >
-        //     <img src="./assets/images/task.jpeg" class="card-img-top w-100" alt="...">
-        //     <div class="card-body">
 
-
-    //             <h3 class="card-title card-font-size">${name}</h3>
-
-
-
-    //                 <h4 class="card-text card-font-size">Assigned To</h4>
-    //                 <p>${assignedTo}</p>
-
-    //                 <h4 class="card-font-size card-font-size">Due Date</h4>
-    //                 <p>${dueDate}</p>
-
-    //                     <h4 class="margin-task-desc card-font-size">Task Description</h4>
-    //                     <p class="margin-task-desc">${description}</p>
-
-
-
-
-    //             <div>
-    //                 <p>${status}</p>
-    //                 <button class="done-button">Done</button>
-    //                 <button>Delete</button>
-
-    //             </div>
-
-    //     </div>
-
-    //          </div>
-    // `;
 
 
     return html;
 };
-console.log(createTaskHtml);
+// console.log(createTaskHtml);
 
 class TaskManager {
     constructor(currentId = 0) {
@@ -98,7 +66,7 @@ class TaskManager {
             const task = this.tasks[i];
             if (task.id === taskId) {
                 foundTask = task;
-                console.log(`!!!!!! ${foundTask}`);
+                // console.log(`!!!!!! ${foundTask}`);
             }
         }
         return foundTask;
@@ -135,14 +103,25 @@ class TaskManager {
         taskListCards.innerHTML = tasksHtml;
     }
 
+    save() {
+
+        const taskJson = JSON.stringify(this.tasks);
+        localStorage.setItem("tasks", taskJson);
+        const currentId = this.currentId.toString();
+        localStorage.setItem("currentId", currentId);
+
+
+    }
     load() {
         if (localStorage.getItem("tasks") !== null) {
             const taskJson = localStorage.getItem("tasks");
             this.tasks = JSON.parse(taskJson);
+
         }
         if (localStorage.getItem("currentId") !== null) {
             const currentId = localStorage.getItem("currentId");
-            this.currentId = Number(currentId);
+            this.currentId = currentId.toString();
         }
     }
+
 }
