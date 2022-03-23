@@ -79,6 +79,7 @@ addTaskbutton.addEventListener('click', validateFormInput);
 // )
 const taskListCards = document.querySelector('#taskList');
 taskListCards.addEventListener('click', (event) => {
+
         if (event.target.classList.contains('done-button')) {
             // console.log('!!!!!!!!!', event.target);
             const parentTask = event.target.parentElement.parentElement.parentElement;
@@ -94,7 +95,8 @@ taskListCards.addEventListener('click', (event) => {
 
         }
     })
-    // const reset = 
+    
+
 
 
 

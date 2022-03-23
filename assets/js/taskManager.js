@@ -1,9 +1,11 @@
 const createTaskHtml = (name, assignedTo, dueDate, status, description, id) => {
+
     const html = ` 
 <div class=" col-lg-4 col-md-6" >
  <div class="card" data-task-id='${id}'>
             <div class="card-header">
                 <img src="./assets/images/task.jpeg" class="card-img-top" alt="...">
+
             </div>
             <div class="card-body">
                 <h3 class="card-title card-font-size">${name}</h3>
@@ -89,11 +91,13 @@ class TaskManager {
             tasksHtmlList.push(taskHtml);
         }
 
+
         tasksHtmlList.forEach((taskhtml, index) => {
             if (this.tasks[index].status == 'DONE') {
                 tasksHtmlList[index] = tasksHtmlList[index].replace('<div id =\'if-part\' style= \'visibility:hidden\'', '<div id =\'if-part\' style= \'visibility:visible\'')
             } else {
                 tasksHtmlList[index] = tasksHtmlList[index].replace('<div id =\'else-part\' style= \'visibility:hidden\'', '<div id =\'if-part\' style= \'visibility:visible\'')
+
             }
         })
         const tasksHtml = tasksHtmlList.join("\n");
@@ -110,6 +114,7 @@ class TaskManager {
 
 
     }
+
     load() {
         if (localStorage.getItem("tasks") !== null) {
             const taskJson = localStorage.getItem("tasks");
@@ -118,10 +123,11 @@ class TaskManager {
         }
         if (localStorage.getItem("currentId") !== null) {
             const currentId = localStorage.getItem("currentId");
-            this.currentId = currentId.toString();
+            this.currentId = Number(currentId);
         }
     }
 
 
 
 }
+
