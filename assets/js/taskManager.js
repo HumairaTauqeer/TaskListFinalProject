@@ -17,13 +17,13 @@ const createTaskHtml = (name, assignedTo, dueDate, status, description, id) => {
                 <p>${description}</p>
                 <div>
                       <div id ='if-part' style= 'visibility:hidden'>
-                            <p style= "color:green">${status}</p>
+                            <p style= "color:green; font-weight:bold;">${status}</p>
                       </div>
                       <div id ='else-part' style= 'visibility:hidden'>
-                            <p style= "color:red">${status}</p>
+                            <p style= "color:red; font-weight:bold;">${status}</p>
                       </div>
                       <button class="done-button">Done</button>
-                      <button>Delete</button>
+                      <button class="delete-button">Delete</button>
                 </div>
             </div>
           </div>
@@ -89,6 +89,7 @@ class TaskManager {
                 task.id
             );
             tasksHtmlList.push(taskHtml);
+
         }
 
 
@@ -103,6 +104,8 @@ class TaskManager {
         const tasksHtml = tasksHtmlList.join("\n");
         const taskListCards = document.querySelector("#taskList");
         taskListCards.innerHTML = tasksHtml;
+
+
     }
 
     save() {
@@ -125,9 +128,23 @@ class TaskManager {
             const currentId = localStorage.getItem("currentId");
             this.currentId = Number(currentId);
         }
+
+    }
+
+    // Method to delete a task 
+    deleteTask(taskId) {
+        const newTasks = [];
+        for (let i = 0; i < this.tasks.length; i++) {
+            const task = this.tasks[i];
+            if (task.id != taskId) {
+                newTasks.push(task);
+            }
+        }
+        this.tasks = newTasks;
+        console.log(this.tasks);
+
     }
 
 
 
 }
-
