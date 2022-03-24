@@ -39,6 +39,7 @@ class TaskManager {
         this.tasks = [];
         this.currentId = currentId;
     }
+
     addTask(name, description, assignedTo, dueDate, status = "TODO") {
         const taskObject = {
             id: this.currentId++,
@@ -148,3 +149,4 @@ class TaskManager {
 
 
 }
+exports.TaskManager = TaskManager;
