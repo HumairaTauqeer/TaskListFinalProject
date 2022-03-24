@@ -16,8 +16,12 @@ myTaskManager.render();
 
 
 
+
 function validateFormInput(e) {
+
     e.preventDefault();
+
+
     const taskNameError = document.getElementById('error-t-name');
     const taskDescError = document.getElementById('error-t-desc');
     const assignedToError = document.getElementById('error-t-assignedTo');
@@ -51,51 +55,80 @@ function validateFormInput(e) {
 
         return false;
     }
-    if (taskDate === ('') || taskDate === NaN) {
+    if (taskDate === ('') || taskDate === null) {
 
 
         dateError.style.display = 'block';
+        // return false stops date to display as NaN if a date field is empty
+        return false;
 
     } else {
+
         true;
+
     }
     myTaskManager.addTask(taskName, taskDesc, assignedTo, taskDate);
+
     myTaskManager.getTaskById();
     myTaskManager.save();
+
     myTaskManager.render();
+
+
+
+
 
 
 }
 
 
 addTaskbutton.addEventListener('click', validateFormInput);
+addTaskbutton.addEventListener('click', () => {
+    const inputs = document.querySelectorAll('.input');
+
+    inputs.forEach(input => input.value = '')
+
+})
 
 
-// form.addEventListener('submit',
-//     myTaskManager.addTask(taskNameInput.value, taskDescription.value, taskAssignedTo.value, date.value)
 
 
 
-// )
+
+
+
+
 const taskListCards = document.querySelector('#taskList');
 taskListCards.addEventListener('click', (event) => {
 
-        if (event.target.classList.contains('done-button')) {
-            // console.log('!!!!!!!!!', event.target);
-            const parentTask = event.target.parentElement.parentElement.parentElement;
-            console.log(parentTask);
-            // read article about dataset and write appropriate comment for explanation of the step
-            const taskId = Number(parentTask.dataset.taskId);
-            // console.log(taskId);
-            const task = myTaskManager.getTaskById(taskId);
-            task.status = 'DONE';
+    if (event.target.classList.contains('done-button')) {
+        // console.log('!!!!!!!!!', event.target);
+        const parentTask = event.target.parentElement.parentElement.parentElement;
+        console.log(parentTask);
+        // read article about dataset and write appropriate comment for explanation of the step
+        const taskId = Number(parentTask.dataset.taskId);
+        // console.log(taskId);
+        const task = myTaskManager.getTaskById(taskId);
+        task.status = 'DONE';
 
-            myTaskManager.save();
-            myTaskManager.render();
+        myTaskManager.save();
+        myTaskManager.render();
 
-        }
-    })
-    
+
+    }
+    if (event.target.classList.contains('delete-button')) {
+        const parentTask = event.target.parentElement.parentElement.parentElement;
+
+        const taskId = Number(parentTask.dataset.taskId);
+        const task = myTaskManager.getTaskById(taskId);
+        myTaskManager.deleteTask(taskId);
+        myTaskManager.save();
+        myTaskManager.render();
+
+    }
+
+})
+
 
 
 
