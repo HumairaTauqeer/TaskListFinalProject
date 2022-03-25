@@ -35,7 +35,7 @@ function validateFormInput(e) {
     taskDescError.style.display = 'none';
     assignedToError.style.display = 'none';
     dateError.style.display = 'none';
-    // taskNameInput.innerHTML = '';
+
     if (taskName == ('')) {
 
         taskNameError.style.display = 'block';
@@ -65,6 +65,7 @@ function validateFormInput(e) {
     } else {
 
         true;
+        form.reset();
 
     }
     myTaskManager.addTask(taskName, taskDesc, assignedTo, taskDate);
@@ -83,12 +84,7 @@ function validateFormInput(e) {
 
 
 addTaskbutton.addEventListener('click', validateFormInput);
-addTaskbutton.addEventListener('click', () => {
-    const inputs = document.querySelectorAll('.input');
 
-    inputs.forEach(input => input.value = '')
-
-})
 
 
 
@@ -105,7 +101,7 @@ taskListCards.addEventListener('click', (event) => {
         // console.log('!!!!!!!!!', event.target);
         const parentTask = event.target.parentElement.parentElement.parentElement;
         console.log(parentTask);
-        // read article about dataset and write appropriate comment for explanation of the step
+        //using dataset property to get the task Id
         const taskId = Number(parentTask.dataset.taskId);
         // console.log(taskId);
         const task = myTaskManager.getTaskById(taskId);

@@ -51,7 +51,7 @@ class TaskManager {
         };
 
         this.tasks.push(taskObject);
-        console.log("this.tasks!!!", this.tasks);
+        // console.log("this.tasks!!!", this.tasks);
     }
     getTaskById(taskId) {
         let foundTask;
@@ -142,7 +142,7 @@ class TaskManager {
             }
         }
         this.tasks = newTasks;
-        console.log(this.tasks);
+        // console.log(this.tasks);
 
     }
 

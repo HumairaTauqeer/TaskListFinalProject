@@ -33,9 +33,10 @@ describe('getTaskById', () => {
         const myTaskManager = new TaskManager();
         //Exercise
         myTaskManager.addTask('make a card', 'use bootstrap for cards', 'Johan', '03/24/2022', 'TODO');
-        const resultId = myTaskManager.getTaskById(+0);
+        const expectedResult = { name: 'make a card', description: 'use bootstrap for cards', assignedTo: 'Johan', dueDate: '03/24/2022', status: 'TODO', id: 0 };
+        const result = myTaskManager.getTaskById(0);
         //Verify
-        assert.equal(resultId, +0);
+        assert.deepEqual(expectedResult, result);
 
 
     })
