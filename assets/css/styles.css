@@ -69,6 +69,10 @@ p {
     margin: 0 auto;
 }
 
+.duedate {
+    background-color: var(--clr-2) !important;
+}
+
 .form-label {
     color: var(--clr-dark3);
     font-size: 1.3rem;
